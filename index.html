@@ -29,11 +29,13 @@
             border-bottom: 1px solid var(--accent-gold);
         }
 
+        /* تعديل لضمان ظهور الشعار بوضوح */
         .logo-img {
-            max-width: 130px; 
+            max-width: 150px; 
             height: auto;
             border-radius: 8px;
-            margin-top: 10px;
+            display: block;
+            margin: 0 auto 10px auto;
         }
 
         nav {
@@ -92,18 +94,6 @@
             transform: translateY(-10px);
         }
 
-        .product-img-placeholder {
-            height: 220px;
-            background: #050505;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            border: 1px dashed #333;
-            color: var(--accent-gold);
-        }
-
         .contact-box {
             background: #16213e;
             padding: 40px 20px;
@@ -139,7 +129,7 @@
 <body>
 
 <header>
-    <img src="http://googleusercontent.com/generated_image_content/0.png" alt="MARAFI Logo" class="logo-img">
+    <img src="https://i.ibb.co/6R0vPTr/image.jpg" alt="MARAFI Logo" class="logo-img">
     <p style="color: var(--accent-gold); letter-spacing: 2px; font-weight: bold; margin-top: 10px;">عطور مرافي.. حيث ترسو الفخامة</p>
 </header>
 
@@ -158,4 +148,24 @@
 </section>
 
 <section id="about" class="section">
-    <h2 style="color: var(--accent-gold); font-size: 2em;">
+    <h2 style="color: var(--accent-gold); font-size: 2em;">من نحن</h2>
+    <p style="max-width: 850px; margin: auto; font-size: 1.1em;">بشغف التميز بدأنا رحلتنا في صناعة أفخم العطور الرجالية والنسائية. بدأ براند مرافي عام 2025 وبشهادة من العملاء ارتقينا لننال رضاكم.</p>
+</section>
+
+<section id="contact" class="section">
+    <div class="contact-box">
+        <h2 style="color: #fff;">تواصل مع براند مرافي</h2>
+        <div style="margin: 30px 0;">
+            <a href="mailto:hayat.albukhit@gmail.com" class="btn">البريد: hayat.albukhit@gmail.com</a>
+            <br>
+            <a href="https://wa.me/967784239783" class="btn whatsapp-btn">واتساب: +967 784 239 783</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 براند مرافي (MARAFI). جميع الحقوق محفوظة لجميع الدول العربية.</p>
+</footer>
+
+</body>
+</html>
