@@ -8,7 +8,7 @@
     <style>
         :root {
             --primary-dark: #0a0a0c;
-            --navy-soft: #16213e;
+            --dark-gray: #1a1a1a; /* اللون الرمادي الغامق الجديد */
             --accent-gold: #c5a059;
             --text-gray: #b0b0b0;
         }
@@ -29,13 +29,11 @@
             border-bottom: 1px solid var(--accent-gold);
         }
 
-        /* تعديل حجم الشعار ليكون متناسقاً */
         .logo-img {
-            max-width: 120px; /* حجم أصغر ومتناسق */
+            max-width: 120px;
             height: auto;
             margin-top: 10px;
             border-radius: 8px;
-        
         }
 
         nav {
@@ -43,7 +41,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            background: rgba(22, 33, 62, 0.95);
+            background: rgba(26, 26, 26, 0.95); /* خلفية رمادية غامقة بدلاً من الأزرق */
             padding: 15px;
             position: sticky;
             top: 0;
@@ -107,7 +105,7 @@
         }
 
         .contact-box {
-            background: #16213e;
+            background: var(--dark-gray); /* خلفية رمادية غامقة بدلاً من الأزرق */
             padding: 40px 20px;
             border-radius: 15px;
             margin-top: 40px;
