@@ -8,115 +8,149 @@
     <style>
         :root {
             --primary-dark: #0a0a0c;
-            --navy-blue: #0f172a; /* اللون الأزرق الداكن كما في الصورة */
+            --navy-soft: #16213e;
             --accent-gold: #c5a059;
-            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
         }
 
         body {
             font-family: 'Cairo', sans-serif;
             margin: 0;
-            /* جعل الشعار هو الخلفية الأساسية للموقع */
-            background: linear-gradient(rgba(10, 10, 12, 0.85), rgba(10, 10, 12, 0.85)), 
-                        url('https://i.ibb.co/6R0vPTr/image.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #ddd;
+            background-color: var(--primary-dark);
+            color: var(--text-gray);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         header {
             background-color: #000;
-            padding: 20px 10px;
+            padding: 30px 20px;
             text-align: center;
+            border-bottom: 1px solid var(--accent-gold);
         }
 
-        /* حجم الشعار الصغير المربع كما في الصورة */
+        /* تعديل حجم الشعار ليكون متناسقاً */
         .logo-img {
-            width: 60px; 
+            max-width: 120px; /* حجم أصغر ومتناسق */
             height: auto;
-            border-radius: 4px;
-            display: block;
-            margin: 0 auto 10px auto;
+            margin-top: 10px;
+            border-radius: 8px;
         }
 
-        .brand-slogan {
-            color: var(--accent-gold);
+        .brand-title {
+            color: #fff;
+            font-size: 1.5rem;
             font-weight: bold;
-            font-size: 1.1em;
             margin: 0;
+            display: block;
         }
 
         nav {
-            background-color: var(--navy-blue);
-            padding: 15px 0;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
+            background: rgba(22, 33, 62, 0.95);
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
             border-bottom: 1px solid var(--accent-gold);
         }
 
         nav a {
-            color: var(--text-white);
+            color: #fff;
             text-decoration: none;
-            font-weight: bold;
             font-size: 0.95em;
-        }
-
-        .hero-content {
-            text-align: center;
-            padding: 100px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero-content h1 {
-            color: var(--text-white);
-            font-size: 2.8em;
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-
-        .whatsapp-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border: 1px solid #28a745;
-            color: #28a745;
-            text-decoration: none;
-            border-radius: 5px;
             font-weight: bold;
             transition: 0.3s;
         }
 
-        .whatsapp-btn:hover {
-            background: #28a745;
+        nav a:hover { color: var(--accent-gold); }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(10, 10, 12, 0.8), rgba(10, 10, 12, 0.8)), url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h2 { color: #fff; font-size: 2.5em; margin-bottom: 15px; }
+
+        .section { padding: 80px 20px; max-width: 1100px; margin: auto; text-align: center; }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: #111;
+            border: 1px solid #222;
+            padding: 20px;
+            border-radius: 12px;
+            transition: 0.4s;
+        }
+
+        .product-card:hover { 
+            border-color: var(--accent-gold); 
+            transform: translateY(-10px);
+        }
+
+        .product-img-placeholder {
+            height: 220px;
+            background: #050505;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: 1px dashed #333;
+            color: var(--accent-gold);
+        }
+
+        .contact-box {
+            background: #16213e;
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: transparent;
             color: #fff;
+            border: 1px solid var(--accent-gold);
+            text-decoration: none;
+            transition: 0.3s;
+            margin: 10px;
+            border-radius: 5px;
+            font-weight: bold;
         }
 
-        section {
-            padding: 60px 20px;
-            text-align: center;
+        .btn:hover {
+            background: var(--accent-gold);
+            color: #000;
         }
 
-        footer {
-            background: #000;
-            padding: 30px;
-            text-align: center;
-            font-size: 0.9em;
-        }
+        .whatsapp-btn { border-color: #25d366; color: #25d366; }
+        .whatsapp-btn:hover { background: #25d366; color: #fff; }
+
+        footer { padding: 40px; text-align: center; border-top: 1px solid #1a1a1a; background: #000; }
     </style>
 </head>
 <body>
 
 <header>
+    <span class="brand-title">براند مرافي</span>
     <img src="https://i.ibb.co/6RrzB0ck/IMG.jpg" alt="MARAFI Logo" class="logo-img">
-    <p class="brand-slogan">عطور مرافي.. حيث ترسو الفخامة</p>
+    <p style="color: var(--accent-gold); letter-spacing: 2px; font-weight: bold; margin-top: 10px;">عطور مرافي.. حيث ترسو الفخامة</p>
 </header>
 
 <nav>
@@ -127,14 +161,66 @@
     <a href="#contact">تواصل معنا</a>
 </nav>
 
-<div class="hero-content">
-    <h1>إبداع عطري لكل العرب</h1>
-    <p>مرافي هو مزيج ساحر من المواد العطرية الطبيعية والاصطناعية، صُممت لتعزيز الجاذبية وإضفاء لمسة من الأناقة والثقة بالنفس فقط من أجلكم.</p>
-    <a href="https://wa.me/967784239783" class="whatsapp-btn">اطلب عبر واتساب</a>
-</div>
+<section id="home" class="hero">
+    <h2>إبداع عطري لكل العرب</h2>
+    <p style="max-width: 800px; margin: auto; font-size: 1.1em; color: #ddd;">مرافي هو مزيج ساحر من المواد العطرية الطبيعية والاصطناعية، صُممت لتعزيز الجاذبية وإضفاء لمسة من الأناقة والثقة بالنفس فقط من أجلكم.</p>
+    <a href="https://wa.me/967784239783" class="btn whatsapp-btn">اطلب عبر واتساب</a>
+</section>
 
-<footer id="contact">
-    <p>© 2026 براند مرافي (MARAFI). جميع الحقوق محفوظة.</p>
+<section id="about" class="section">
+    <h2 style="color: var(--accent-gold); font-size: 2em;">من نحن</h2>
+    <p style="max-width: 850px; margin: auto; font-size: 1.1em;">بشغف التميز بدأنا رحلتنا في صناعة أفخم العطور الرجالية والنسائية. بدأ براند مرافي عام 2025 وبشهادة من العملاء ارتقينا لننال رضاكم، فنحن كوكبة من التميز لننال رضاكم ثم ترسون على مرافينا، عطور مرافي براندكم الكافي.</p>
+</section>
+
+<section id="identity" class="section" style="background: #0d0d11;">
+    <h2 style="color: var(--accent-gold);">هوية عطور مرافي</h2>
+    <p style="max-width: 800px; margin: auto;">هويتنا مستمدة من رسوّ الفخامة في الذاكرة. نحن لا نصنع عطوراً فقط، بل نصنع ذكرى تدوم. تعتمد هويتنا على المكونات النادرة التي تجمع بين الأصالة العربية والحداثة العالمية، لتعكس شخصية قوية وواثقة.</p>
+</section>
+
+<section id="products" class="section">
+    <h2 style="color: #fff;">المجموعة العطرية</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-img-placeholder">صورة المنتج 1</div>
+            <h3>مرافي عود</h3>
+            <p>تركيبة فاخرة من العود الطبيعي.</p>
+            <a href="https://wa.me/967784239783" class="btn">طلب العطر</a>
+        </div>
+        <div class="product-card">
+            <div class="product-img-placeholder">صورة المنتج 2</div>
+            <h3>مرافي رويال</h3>
+            <p>إصدار الملوك، فخامة بلا حدود.</p>
+            <a href="https://wa.me/967784239783" class="btn">طلب العطر</a>
+        </div>
+        <div class="product-card">
+            <div class="product-img-placeholder">صورة المنتج 3</div>
+            <h3>مرافي ليميتد</h3>
+            <p>إصدار خاص لعشاق التفرد والتميز.</p>
+            <a href="https://wa.me/967784239783" class="btn">طلب العطر</a>
+        </div>
+        <div class="product-card">
+            <div class="product-img-placeholder">صورة المنتج 4</div>
+            <h3>مرافي مسك</h3>
+            <p>عبير النظافة والهدوء الساحر.</p>
+            <a href="https://wa.me/967784239783" class="btn">طلب العطر</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section">
+    <div class="contact-box">
+        <h2 style="color: #fff;">تواصل مع براند مرافي</h2>
+        <p>نحن متواجدون لخدمتكم من جميع الدول العربية:</p>
+        <div style="margin: 30px 0;">
+            <a href="mailto:hayat.albukhit@gmail.com" class="btn">البريد: hayat.albukhit@gmail.com</a>
+            <br>
+            <a href="https://wa.me/967784239783" class="btn whatsapp-btn">واتساب: +967 784 239 783</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 براند مرافي (MARAFI). جميع الحقوق محفوظة لجميع الدول العربية.</p>
 </footer>
 
 </body>
