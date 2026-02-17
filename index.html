@@ -4,209 +4,284 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مرافي | MARAFI - عبق الفخامة العربية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-dark: #0a0a0c;
-            --dark-gray: #1a1a1a;
+            --dark-gray: #121214;
             --accent-gold: #c5a059;
-            --text-gray: #b0b0b0;
+            --soft-gold: #e2c286;
+            --text-gray: #d1d1d1;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
+        /* تحسينات عامة */
         body {
             font-family: 'Cairo', sans-serif;
             margin: 0;
             background-color: var(--primary-dark);
             color: var(--text-gray);
-            line-height: 1.6;
+            line-height: 1.8;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
-        header {
-            background-color: #000;
-            padding: 30px 20px;
-            text-align: center;
-            border-bottom: 1px solid var(--accent-gold);
-        }
-
-        .logo-img {
-            max-width: 120px;
-            height: auto;
-            margin-top: 10px;
-            border-radius: 8px;
-        }
-
+        /* شريط التنقل الاحترافي */
         nav {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            background: rgba(26, 26, 26, 0.95);
-            padding: 15px;
+            align-items: center;
+            gap: 30px;
+            background: rgba(10, 10, 12, 0.85);
+            padding: 20px;
             position: sticky;
             top: 0;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             z-index: 1000;
-            border-bottom: 1px solid var(--accent-gold);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
 
         nav a {
-            color: #fff;
+            color: var(--white);
             text-decoration: none;
-            font-size: 0.95em;
-            font-weight: bold;
-            transition: 0.3s;
+            font-size: 0.9em;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            right: 0;
+            background-color: var(--accent-gold);
+            transition: var(--transition);
         }
 
         nav a:hover { color: var(--accent-gold); }
+        nav a:hover::after { width: 100%; }
 
-        .hero {
+        /* رأس الصفحة */
+        header {
+            background-color: #000;
+            padding: 40px 20px;
             text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(rgba(10, 10, 12, 0.8), rgba(10, 10, 12, 0.8)), url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80');
-            background-size: cover;
-            background-position: center;
         }
 
-        .hero h2 { color: #fff; font-size: 2.5em; margin-bottom: 15px; }
+        .logo-img {
+            max-width: 140px;
+            filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.3));
+            transition: var(--transition);
+        }
 
-        .section { padding: 80px 20px; max-width: 1100px; margin: auto; text-align: center; }
+        /* قسم البطولة (Hero) */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
 
+        .hero h2 { 
+            color: var(--white); 
+            font-size: clamp(2em, 5vw, 3.5em); 
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* الأقسام */
+        .section { padding: 100px 20px; max-width: 1200px; margin: auto; text-align: center; }
+        
+        h2.section-title {
+            color: var(--accent-gold);
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* كروت المنتجات الاحترافية */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
         }
 
         .product-card {
-            background: #111;
-            border: 1px solid #222;
-            padding: 20px;
-            border-radius: 12px;
-            transition: 0.4s;
-            overflow: hidden;
+            background: linear-gradient(145deg, #161618, #0a0a0c);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 0px; /* تصميم عصري حاد الزوايا قليلاً */
+            transition: var(--transition);
+            position: relative;
         }
 
         .product-card:hover { 
-            border-color: var(--accent-gold); 
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
         .product-img {
             width: 100%;
-            height: 250px;
+            height: 320px;
             object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #333;
+            margin-bottom: 20px;
+            filter: grayscale(20%);
+            transition: var(--transition);
         }
 
-        .contact-box {
-            background: var(--dark-gray);
-            padding: 40px 20px;
-            border-radius: 15px;
-            margin-top: 40px;
-            border: 1px solid var(--accent-gold);
-        }
+        .product-card:hover .product-img { filter: grayscale(0%); }
 
+        .product-card h3 { color: var(--soft-gold); margin: 15px 0; font-size: 1.4em; }
+
+        /* الأزرار الراقية */
         .btn {
             display: inline-block;
-            padding: 12px 25px;
+            padding: 14px 35px;
             background: transparent;
-            color: #fff;
+            color: var(--accent-gold);
             border: 1px solid var(--accent-gold);
             text-decoration: none;
-            transition: 0.3s;
-            margin: 10px;
-            border-radius: 5px;
-            font-weight: bold;
+            transition: var(--transition);
+            font-size: 0.9em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .btn:hover {
             background: var(--accent-gold);
             color: #000;
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
         }
 
-        .whatsapp-btn { border-color: var(--accent-gold); color: #fff; }
-        .whatsapp-btn:hover { background: var(--accent-gold); color: #000; }
+        .whatsapp-btn {
+            background: var(--accent-gold);
+            color: #000;
+        }
 
-        footer { padding: 40px; text-align: center; border-top: 1px solid #1a1a1a; background: #000; }
+        .whatsapp-btn:hover {
+            background: var(--soft-gold);
+            transform: scale(1.05);
+        }
+
+        /* صندوق التواصل */
+        .contact-box {
+            background: #000;
+            padding: 60px 20px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            position: relative;
+        }
+
+        footer { 
+            padding: 50px; 
+            text-align: center; 
+            background: #000; 
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.8em;
+            letter-spacing: 1px;
+        }
+
+        /* تأثيرات التحميل */
+        [data-aos] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s ease-out;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
 
 <header>
     <img src="https://i.ibb.co/6RrzB0ck/IMG.jpg" alt="MARAFI Logo" class="logo-img">
-    <p style="color: var(--accent-gold); letter-spacing: 2px; font-weight: bold; margin-top: 10px;">عطور مرافي.. حيث ترسو الفخامة</p>
+    <p style="color: var(--accent-gold); letter-spacing: 4px; font-weight: 300; margin-top: 15px; font-size: 0.8em;">MARAFI PERFUME LUXURY</p>
 </header>
 
 <nav>
     <a href="#home">الرئيسية</a>
     <a href="#about">قصتنا</a>
-    <a href="#identity">هوية العطر</a>
-    <a href="#products">المجموعة العطرية</a>
-    <a href="#contact">تواصل معنا</a>
+    <a href="#identity">الهوية</a>
+    <a href="#products">المجموعة</a>
+    <a href="#contact">التواصل</a>
 </nav>
 
 <section id="home" class="hero">
-    <h2>إبداع عطري لكل العرب</h2>
-    <p style="max-width: 800px; margin: auto; font-size: 1.1em; color: #ddd;">مرافي هو مزيج ساحر من المواد العطرية الطبيعية والاصطناعية، صُممت لتعزيز الجاذبية وإضفاء لمسة من الأناقة والثقة بالنفس.</p>
-    <a href="https://wa.me/967784239783" class="btn whatsapp-btn">اطلب عبر واتساب</a>
+    <h2 data-aos>إبداع عطري لكل العرب</h2>
+    <p style="max-width: 700px; margin: 0 auto 30px; font-size: 1.1em; font-weight: 300;" data-aos>مزيج ساحر من المواد الطبيعية والاصطناعية، صُممت لتعزيز الجاذبية وإضفاء لمسة من الأناقة المطلقة.</p>
+    <a href="https://wa.me/967784239783" class="btn whatsapp-btn" data-aos>اكتشف مجموعتنا الآن</a>
 </section>
 
 <section id="about" class="section">
-    <h2 style="color: var(--accent-gold); font-size: 2em;">من نحن</h2>
-    <p style="max-width: 850px; margin: auto; font-size: 1.1em;">بشغف التميز بدأنا رحلتنا في صناعة أفخم العطور الرجالية والنسائية. بدأ براند مرافي عام 2025 وبشهادة من العملاء ارتقينا لننال رضاكم.</p>
+    <h2 class="section-title" data-aos>قصتنا</h2>
+    <p style="max-width: 850px; margin: auto; font-size: 1.2em; font-weight: 300;" data-aos>بشغف التميز بدأنا رحلتنا في صناعة أفخم العطور الرجالية والنسائية. بدأ براند مرافي عام 2025 وبشهادة من العملاء ارتقينا لننال رضاكم، لنصبح الوجهة الأولى لعشاق الفخامة.</p>
 </section>
 
-<section id="identity" class="section" style="background: #0d0d11;">
-    <h2 style="color: var(--accent-gold);">هوية عطور مرافي</h2>
-    <p style="max-width: 800px; margin: auto;">هويتنا مستمدة من رسوّ الفخامة في الذاكرة. نحن لا نصنع عطوراً فقط، بل نصنع ذكرى تدوم.</p>
+<section id="identity" class="section" style="background: #0d0d11; border-top: 1px solid rgba(197, 160, 89, 0.1); border-bottom: 1px solid rgba(197, 160, 89, 0.1);">
+    <h2 class="section-title" data-aos>هوية العطر</h2>
+    <p style="max-width: 800px; margin: auto; font-size: 1.2em; font-weight: 300;" data-aos>هويتنا مستمدة من رسوّ الفخامة في الذاكرة. نحن لا نصنع عطوراً فقط، بل نصنع هالة من الثقة وذكرى لا تُنسى ترافقك أينما كنت.</p>
 </section>
 
 <section id="products" class="section">
-    <h2 style="color: #fff;">المجموعة العطرية</h2>
+    <h2 class="section-title" data-aos>المجموعة العطرية</h2>
     <div class="product-grid">
-        <div class="product-card">
+        <div class="product-card" data-aos>
             <img src="https://image2url.com/r2/default/images/1771322264612-5d98939e-a9b9-44df-a80e-15cb04ca28f6.png" alt="مرافي 301" class="product-img">
-            <h3>مرافي 301 (رجالي)</h3>
-            <p>مرافي 301 عطر رجالي، الأفخم برائحته الثابتة، مدموج بأكثر من زيوت عطرية عالمية.</p>
-            <a href="https://wa.me/967784239783?text=أود طلب عطر مرافي 301 (رجالي) %0A صورة المنتج: https://image2url.com/r2/default/images/1771322264612-5d98939e-a9b9-44df-a80e-15cb04ca28f6.png" class="btn">طلب العطر</a>
+            <h3>مرافي 301</h3>
+            <p style="font-size: 0.9em; min-height: 60px;">الأفخم برائحته الثابتة، مدموج بأكثر من زيوت عطرية عالمية منتقاة بدقة.</p>
+            <a href="https://wa.me/967784239783?text=أود طلب عطر مرافي 301 (رجالي) %0A صورة المنتج: https://image2url.com/r2/default/images/1771322264612-5d98939e-a9b9-44df-a80e-15cb04ca28f6.png" class="btn">اطلب الفخامة</a>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-aos>
             <img src="https://image2url.com/r2/default/images/1771322560581-b04b0468-41f2-4027-a3bc-9d9216f7e172.png" alt="مرافي 201" class="product-img">
-            <h3>مرافي 201 (نسائي)</h3>
-            <p>مرافي 201 عطر نسائي، تم اختيار هذا العطر بكل حب ليكتشف المشاعر الحقيقيه.</p>
-            <a href="https://wa.me/967784239783?text=أود طلب عطر مرافي 201 (نسائي) %0A صورة المنتج: https://image2url.com/r2/default/images/1771322560581-b04b0468-41f2-4027-a3bc-9d9216f7e172.png" class="btn">طلب العطر</a>
+            <h3>مرافي 201</h3>
+            <p style="font-size: 0.9em; min-height: 60px;">تم اختيار هذا العطر بكل حب ليكتشف المشاعر الحقيقيه ويأخذكم لعالم مختلف.</p>
+            <a href="https://wa.me/967784239783?text=أود طلب عطر مرافي 201 (نسائي) %0A صورة المنتج: https://image2url.com/r2/default/images/1771322560581-b04b0468-41f2-4027-a3bc-9d9216f7e172.png" class="btn">اطلب الفخامة</a>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-aos>
             <img src="https://image2url.com/r2/default/images/1771323974957-8ca6c9c0-95d2-46e1-8895-3cb4222af25e.png" alt="مرافي 302" class="product-img">
-            <h3>مرافي 302 (رجالي)</h3>
-            <p>بعد نجاح عطر مرافي ٣٠١ تم صناعة عطر ٣٠٢ لتجديد العهد برونق جديد.</p>
-            <a href="https://wa.me/967784239783?text=أود طلب عطر مرافي 302 (رجالي) %0A صورة المنتج: https://image2url.com/r2/default/images/1771323974957-8ca6c9c0-95d2-46e1-8895-3cb4222af25e.png" class="btn">طلب العطر</a>
+            <h3>مرافي 302</h3>
+            <p style="font-size: 0.9em; min-height: 60px;">بعد نجاح عطر مرافي ٣٠١ تم صناعة عطر ٣٠٢ لتجديد العهد برونق جديد وتركيبة استثنائية.</p>
+            <a href="https://wa.me/967784239783?text=أود طلب عطر مرافي 302 (رجالي) %0A صورة المنتج: https://image2url.com/r2/default/images/1771323974957-8ca6c9c0-95d2-46e1-8895-3cb4222af25e.png" class="btn">اطلب الفخامة</a>
         </div>
     
-        <div class="product-card">
+        <div class="product-card" data-aos>
             <img src="https://image2url.com/r2/default/images/1771324585056-db5625b6-8042-4678-81a6-733331ceeb83.png" alt="مرافي 303" class="product-img">
-            <h3>مرافي 303 (رجالي)</h3>
-            <p>مرافي 303 سحر البحر والطبيعه ستشعرون بها في هذا المرفى الجديد.</p>
-            <a href="https://wa.me/967784239783?text=أود طلب عطر مرافي 303 (رجالي) %0A صورة المنتج: https://image2url.com/r2/default/images/1771324585056-db5625b6-8042-4678-81a6-733331ceeb83.png" class="btn">طلب العطر</a>
+            <h3>مرافي 303</h3>
+            <p style="font-size: 0.9em; min-height: 60px;">سحر البحر والطبيعه ستشعرون بها في هذا المرفى الجديد.. هنا يبدأ الاختلاف.</p>
+            <a href="https://wa.me/967784239783?text=أود طلب عطر مرافي 303 (رجالي) %0A صورة المنتج: https://image2url.com/r2/default/images/1771324585056-db5625b6-8042-4678-81a6-733331ceeb83.png" class="btn">اطلب الفخامة</a>
         </div>
     </div>
 </section>
 
 <section id="contact" class="section">
-    <div class="contact-box">
-        <h2 style="color: #fff;">تواصل مع براند مرافي</h2>
-        <div style="margin: 30px 0;">
-            <a href="mailto:marafi.ye@gmail.com" class="btn">جيميل اضغط هنا</a>
-            <br><br>
-            <a href="https://wa.me/967784239783" class="btn whatsapp-btn">واتساب 1</a>
-            <br>
-            <a href="https://wa.me/967772362694" class="btn whatsapp-btn">واتساب 2</a>
+    <div class="contact-box" data-aos>
+        <h2 style="color: var(--white); margin-bottom: 30px;">تواصل حصري</h2>
+        <p style="margin-bottom: 40px; font-weight: 300;">نحن هنا لخدمتكم وتقديم الاستشارات العطرية التي تليق بكم.</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            <a href="mailto:marafi.ye@gmail.com" class="btn">البريد الإلكتروني</a>
+            <a href="https://wa.me/967784239783" class="btn">واتساب 1</a>
+            <a href="https://wa.me/967772362694" class="btn">واتساب 2</a>
         </div>
     </div>
 </section>
@@ -214,6 +289,20 @@
 <footer>
     <p>© 2026 براند مرافي (MARAFI). جميع الحقوق محفوظة لجميع الدول العربية.</p>
 </footer>
+
+<script>
+    // إضافة تأثير الظهور التدريجي عند التمرير
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
